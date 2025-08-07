@@ -1,0 +1,29 @@
+{
+  "name": "xray-playright-integration-ts",
+  "version": "1.0.0",
+  "description": "Integration of Playwright framework with Xray API to automatically import test results",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SaraP24/Xray-Playright-Integration-TS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/SaraP24/Xray-Playright-Integration-TS/issues"
+  },
+  "homepage": "https://github.com/SaraP24/Xray-Playright-Integration-TS#readme",
+  "devDependencies": {
+    "playwright": "^1.54.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "playwright-xray": "^0.6.16"
+  }
+}
