@@ -1,53 +1,59 @@
-# Xray-Playright-Integration-TS
-# Playwright + Xray Integration Example
+# Playwright + Xray Reporter Integration with Jira API 
 
 This project demonstrates how to integrate **Playwright** automated tests with **Xray** for Jira, using the `playwright-xray` reporter.
 
 ## 📌 Features
 - End-to-end testing with Playwright
+
 - Automatic test result upload to Xray via API
+
 - Environment variables for secure credentials
+
 - Example test cases for quick start
 
 ---
-
 ## 🚀 Setup
 
 ### 1️⃣ Clone the repository
 ```bash
 git clone https://github.com/your-username/playwright-xray-integration.git
 cd playwright-xray-integration
+```
 
-2️⃣ Install dependencies
-
+### 2️⃣ Install dependencies
+```bash
 npm install
+```
 
-3️⃣ Configure environment variables
+### 3️⃣ Configure environment variables
 Create a .env file based on .env.example:
-
+```
+env
 CLIENT_ID=your_xray_client_id             //
 CLIENT_SECRET=your_xray_client_secret    // <--These credentials are created on Github Actions settings, 
                                         //    for more info please see https://docs.github.com/es/actions/how-tos/write-workflows/choose-what-workflows-do/use-secrets -->
 JIRA_URL=https://your-jira-url
 PROJECT_KEY=JIRA_CODE
 TEST_PLAN=JIRA_CODEXXXXX
+```
 
-4️⃣ Run tests
-
+### 4️⃣ Run tests
+```
 npx playwright test
+```
 
 
-📊 Running with Xray Integration
+## 📊 Running with Xray Integration
 The playwright-xray reporter will:
 
-Authenticate with Xray
+- Authenticate with Xray
 
-Upload test results linked to the given Test Plan
+- Upload test results linked to the given Test Plan
 
-Optionally run in dryRun mode for debugging
+- Optionally run in dryRun mode for debugging
 
 Example config in playwright.config.ts:
-
+``` bash
 reporter: [
   ['dot'],
   ['playwright-xray', {
@@ -60,20 +66,23 @@ reporter: [
     dryRun: false
   }]
 ]
+```
 
-📂 Project Structure
-
+## 📂 Project Structure
+```
 tests/
-  example.spec.ts    # Passing test
-  login.spec.ts      # Example with assertions
+  data-driven-with-iterations.spec.ts    # Passing test
+  simple-test.spec.ts                    # Example with assertions
+  test-with-steps.spec                   # Example with steps
 utils/
-  xray-helper.ts     # Optional: helper for custom payloads
+  xray-helper.ts                         # Optional: helper for custom payloads
 .env.example
 playwright.config.ts
+```
 
-🛠 Troubleshooting
-No payload is generated → ensure dryRun: false in config.
+## 🛠 Troubleshooting
+- No payload is generated → ensure dryRun: false in config.
 
-Invalid credentials → check .env matches your Xray API credentials.
+- Invalid credentials → check .env matches your Xray API credentials.
 
-No tests appear in Xray → verify testPlan and projectKey.
+- No tests appear in Xray → verify testPlan and projectKey.
