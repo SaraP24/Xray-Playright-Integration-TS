@@ -43,7 +43,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Upload results to Xray
-        run: TEST_PLAN_ID=${{ inputs.testPlanId }} npx playwright test
+        run: npx playwright test
         env:
           CLIENT_ID: ${{ secrets.CLIENT_ID }}
           CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
