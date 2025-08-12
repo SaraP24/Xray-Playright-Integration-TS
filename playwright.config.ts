@@ -5,7 +5,7 @@ export default defineConfig({
     timeout: 30000,
     retries: 0,
     reporter: [['html'],
-    ['json', { outputFile: 'test-results.json' }], //necesario para que se cree el payload en dry run
+    ['json', { outputFile: 'test-results.json' }], //necesario para que se cree el payload en dry run - comentar
     ['playwright-xray',
         {
             jira: {
@@ -18,8 +18,8 @@ export default defineConfig({
                 client_secret: process.env.CLIENT_SECRET,
                 // Optional: xrayUrl: '' if the xray region needs to be specified
             },
-            projectKey: 'JIRA_CODE',
-            testPlan: 'JIRA_CODEXXXXX',
+            projectKey: process.env.JIRA_PROJECT_KEY || 'JIRA_CODE',
+            testPlan: process.env.JIRA_TEST_PLAN || 'JIRA_CODEXXXXX',
             // runResult: true,
             debug: false,
             dryRun: true,
@@ -39,13 +39,13 @@ export default defineConfig({
             name: 'chromium',
             use: { ...devices['Desktop Chrome'] },
         },
-        //  {
-        //         name: 'firefox',
-        //         use: { ...devices['Desktop Firefox'] },
-        //     },
-        //     {
-        //         name: 'webkit',
-        //         use: { ...devices['Desktop Safari'] },
-        //},
+        {
+            name: 'firefox',
+            use: { ...devices['Desktop Firefox'] },
+        },
+        {
+            name: 'webkit',
+            use: { ...devices['Desktop Safari'] },
+        },
     ],
 });
