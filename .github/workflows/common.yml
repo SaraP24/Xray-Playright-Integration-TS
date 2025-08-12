@@ -14,7 +14,7 @@ on:
     inputs:
       testPlanId:
         description: 'Jira Xray Test Plan ID (e.g. TCK-1234)'
-        required: true
+        required: false
         type: string
 
 jobs:
