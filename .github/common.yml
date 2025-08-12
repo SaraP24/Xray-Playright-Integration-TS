@@ -1,0 +1,43 @@
+name: Common Playwright Test Setup for Xray Integration
+
+on:
+  push:
+    branches:
+      - main
+  workflow_call:
+    inputs:
+      testPlanId:
+        required: true
+        type: string
+
+  workflow_dispatch:
+    inputs:
+      testPlanId:
+        description: 'Jira Xray Test Plan ID (e.g. TCK-1234)'
+        required: true
+        type: string
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: Upload results to Xray
+        run: TEST_PLAN_ID=${{ inputs.testPlanId }} npx playwright test
+        env:
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
