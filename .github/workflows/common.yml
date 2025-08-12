@@ -1,4 +1,4 @@
-name: Common Playwright Test Setup for Xray Integration
+name: Run Playwright Tests
 
 on:
   push:
@@ -16,6 +16,12 @@ on:
         description: 'Jira Xray Test Plan ID (e.g. TCK-1234)'
         required: false
         type: string
+
+        browser:
+          description: 'Browser to run tests on (chromium, firefox, webkit)'
+          required: false
+          type: string
+          default: 'chromium'
 
 jobs:
   run-tests:
