@@ -1,6 +1,7 @@
-import test, { expect } from "@playwright/test";
+import test, { expect } from "playwright/test";
 
-test('Google works', async ({ page }) => {
-  await page.goto('https://google.com');
-  await expect(page).toHaveTitle(/Google/);
+test('J79 | basic test', async ({ page }) => {
+  await page.goto('https://playwright.dev/');
+  const title = page.locator('.navbar__inner .navbar__title');
+  await expect(title).toHaveText('Playwright');
 });
