@@ -5,3 +5,7 @@ test('J79 | basic test', async ({ page }) => {
   const title = page.locator('.navbar__inner .navbar__title');
   await expect(title).toHaveText('Playwright');
 });
+
+test('J80 | basic test 2', async ({ page }) => {
+throw new Error('This test is intentionally failing');
+});
